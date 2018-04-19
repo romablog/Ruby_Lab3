@@ -7,13 +7,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   validates :password, length: { in: 6..20 }
 
-  before_validation :normalize_name, :normalize_email on: :create
+  before_validation :normalize_email on: :create
 
   private
-  def normalize_name
-    self.name = name.downcase.titleize
-  end
-
   def normalize_email
     self.email = email.downcase
   end

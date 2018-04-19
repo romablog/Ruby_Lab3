@@ -1,6 +1,6 @@
 class Country < ApplicationRecord
-  has_many :towns
-  has_many :railwayStations, through: :towns
+  has_many :cities
+  has_many :railwayStations, through: :cities
 
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

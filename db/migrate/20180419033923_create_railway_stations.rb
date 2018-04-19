@@ -3,7 +3,7 @@ class CreateRailwayStations < ActiveRecord::Migration[5.2]
     create_table :railway_stations do |t|
       t.string :name
       t.integer :place_count
-      t.references :town, foreign_key: true
+      t.references :city, foreign_key: true
 
       t.timestamps
     end

@@ -1,4 +1,4 @@
-class Town < ApplicationRecord
+class City < ApplicationRecord
   belongs_to :country
 
   has_many :railwayStations

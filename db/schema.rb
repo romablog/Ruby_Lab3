@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_19_034934) do
+ActiveRecord::Schema.define(version: 2018_04_19_043535) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -21,18 +29,10 @@ ActiveRecord::Schema.define(version: 2018_04_19_034934) do
   create_table "railway_stations", force: :cascade do |t|
     t.string "name"
     t.integer "place_count"
-    t.integer "town_id"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["town_id"], name: "index_railway_stations_on_town_id"
-  end
-
-  create_table "towns", force: :cascade do |t|
-    t.string "name"
-    t.integer "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_towns_on_country_id"
+    t.index ["city_id"], name: "index_railway_stations_on_city_id"
   end
 
   create_table "trains", force: :cascade do |t|

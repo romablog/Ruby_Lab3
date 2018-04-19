@@ -6,7 +6,6 @@ class Trip < ApplicationRecord
   has_and_belongs_to_many :users
 
   validate :out_after_int
-  validates :start_date, :end_date, presence: true
 
   private
   def out_after_int

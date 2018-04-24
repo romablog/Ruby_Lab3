@@ -2,7 +2,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'trips', :to => 'trips#all'
-  get 'trips/longest_trip', :to => 'trips#longest_trip'
-  get 'trips/:railway_id', :to => 'trips#by_railway'
+  get 'trip/:train_id', :to => 'trips#by_train'
+  get 'trip/after/:date', :to => 'trips#after_date'
+  get 'trip/delete/:id', :to => 'trips#delete'
+
+  get 'users', :to => 'users#all'
+  get 'user/:first_name', :to => 'users#by_first_name'
+  resources :users, except: [:create, :destroy]
+
+  get 'trains', :to => 'train#all'
+  get 'train/two_first', :to => 'train#first_two'
+  get 'train/all_names', :to => 'train#all_names'
+  resources :trains, except: [:update]
 
 end

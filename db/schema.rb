@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2018_04_19_043535) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "name"
-    t.integer "place_count"
     t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,14 +44,14 @@ ActiveRecord::Schema.define(version: 2018_04_19_043535) do
   create_table "trips", force: :cascade do |t|
     t.datetime "time_in"
     t.datetime "time_out"
-    t.integer "plane_id"
+    t.integer "train_id"
     t.integer "railway_station_from_id"
     t.integer "railway_station_to_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plane_id"], name: "index_trips_on_plane_id"
     t.index ["railway_station_from_id"], name: "index_trips_on_railway_station_from_id"
     t.index ["railway_station_to_id"], name: "index_trips_on_railway_station_to_id"
+    t.index ["train_id"], name: "index_trips_on_train_id"
   end
 
   create_table "users", force: :cascade do |t|

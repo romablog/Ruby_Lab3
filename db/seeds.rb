@@ -35,10 +35,8 @@ trip2 = Trip.create time_out: DateTime.new(2018, 5, 26),
 user1 = User.create name: 'Roman',
                     second_name: 'Hruzd',
                     password: '123456',
-                    email: 'roman@mail.ru',
-                    trip_id: trip1.id
+                    email: 'roman@mail.ru'
 user2 = User.create name: 'Ann',
                     second_name: 'Gruzd',
                     password: '123456',
-                    email: 'ann@mail.ru',
-                    trip_id: trip2.id
+                    email: 'ann@mail.ru'

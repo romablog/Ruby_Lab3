@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     render json: User.where(name: params[:first_name]).take
   end
 
+  def count
+    render json: User.count
+  end
+
   def new
     render json: User.create!(user_params)
   end

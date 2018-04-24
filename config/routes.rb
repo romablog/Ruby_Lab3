@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'trip/delete/:id', :to => 'trips#delete'
 
   get 'users', :to => 'users#all'
+  get 'user/count', :to => 'users#count'
   get 'user/:first_name', :to => 'users#by_first_name'
   resources :users, except: [:create, :destroy]
 

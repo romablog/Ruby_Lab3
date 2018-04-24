@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'trains', :to => 'train#all'
   get 'train/two_first', :to => 'train#first_two'
   get 'train/all_names', :to => 'train#all_names'
+  get 'train/:id/place_count', :to => 'train#place_count'
+  get 'train/smallest_place_count', :to => 'train#smallest_place_count'
   resources :trains, except: [:update]
 
 end

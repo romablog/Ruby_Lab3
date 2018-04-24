@@ -12,6 +12,15 @@ class TrainController < ApplicationController
     render json: Train.select(:name).distinct
   end
 
+  def smallest_place_count
+    render json: Train.minimum(:place_count)
+  end
+
+  def place_count
+    count = Train.find(params[:id]).place_count
+    render json: count
+  end
+
   def update
     Train.find(params[:id]).update!(train_params)
     head :ok

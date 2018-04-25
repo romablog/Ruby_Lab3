@@ -9,13 +9,15 @@ Rails.application.routes.draw do
   get 'users', :to => 'users#all'
   get 'user/count', :to => 'users#count'
   get 'user/:first_name', :to => 'users#by_first_name'
-  resources :users, except: [:create, :destroy]
+  resources :users, only: [:create, :destroy]
 
   get 'trains', :to => 'train#all'
   get 'train/two_first', :to => 'train#first_two'
   get 'train/all_names', :to => 'train#all_names'
   get 'train/:id/place_count', :to => 'train#place_count'
   get 'train/smallest_place_count', :to => 'train#smallest_place_count'
-  resources :trains, except: [:update]
+  resources :trains, only: [:update]
+
+  get 'city/has_stations/:count/:name', :to => 'city#cities_with_stations'
 
 end

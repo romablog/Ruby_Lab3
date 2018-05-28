@@ -1,22 +1,41 @@
 class TripsController < ApplicationController
 
-  def all
-    trips = Trip.all
-    render json: trips
-  end
-
   def by_train
-    trip = Trip.where(train_id: params[:train_id]).take
-    render json: trip
+    render json: Trip.where(train_id: params[:train_id]).take!
   end
 
   def after_date
-    trips = Trip.where('time_in >= :end_date', {end_date: DateTime.iso8601(params[:date])})
-    render json: trips
+    render json: Trip.where('time_in >= :end_date', {end_date: DateTime.iso8601(params[:date])})
   end
 
-  def delete
+  def get_users
+    trip = Trip.find(params[:id])
+    render json: trip.users
+  end
+
+  def index
+    render json: Trip.all
+  end
+
+  def show
+    render json: Trip.find(params[:id])
+  end
+
+  def destroy
     render json: Trip.destroy(params[:id])
+  end
+
+  def create
+    render json: Trip.create!(trip_params)
+  end
+
+  def update
+    render json: Trip.find(params[:id]).update!(trip_params)
+  end
+
+  def trip_params
+    params.require([:train_id, :railway_station_from_id, :railway_station_to_id, :time_in, :time_out])
+    params.permit(:train_id, :railway_station_from_id, :railway_station_to_id, :time_in, :time_out)
   end
 
 end

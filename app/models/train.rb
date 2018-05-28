@@ -1,5 +1,5 @@
 class Train < ApplicationRecord
-  has_many :trips
+  has_many :trips, :dependent => :destroy
 
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }

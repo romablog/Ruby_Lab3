@@ -1,9 +1,5 @@
 class TrainController < ApplicationController
 
-  def all
-    render json: Train.all
-  end
-
   def first_two
     render json: Train.limit(2)
   end
@@ -17,13 +13,27 @@ class TrainController < ApplicationController
   end
 
   def place_count
-    count = Train.find(params[:id]).place_count
-    render json: count
+    render json: Train.find(params[:id]).place_count
+  end
+
+  def index
+    render json: Train.all
+  end
+
+  def show
+    render json: Train.find(params[:id]);
+  end
+
+  def create
+    render json: Train.create!(train_params)
+  end
+
+  def destroy
+    render json: Train.destroy(params[:id])
   end
 
   def update
-    Train.find(params[:id]).update!(train_params)
-    head :ok
+    render json: Train.find(params[:id]).update!(train_params)
   end
 
   def train_params

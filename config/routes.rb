@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'trips', :to => 'trips#all'
-  get 'trip/:train_id', :to => 'trips#by_train'
-  get 'trip/after/:date', :to => 'trips#after_date'
-  get 'trip/delete/:id', :to => 'trips#delete'
+  get 'trips/:train_id', :to => 'trips#by_train'
+  get 'trips/after/:date', :to => 'trips#after_date'
+  get 'trips/:id/users', :to => 'trips#get_users'
+  resources :trips, only: [:index, :destroy, :create, :update, :show]
 
-  get 'users', :to => 'users#all'
-  get 'user/count', :to => 'users#count'
-  get 'user/:first_name', :to => 'users#by_first_name'
-  resources :users, only: [:create, :destroy]
+  get 'users/count', :to => 'users#count'
+  get 'users/:first_name', :to => 'users#by_first_name'
+  post 'users/add_trip', :to => 'users#create_trip'
+  get 'users/:id/trips', :to => 'users#get_trips'
+  resources :users, only: [:create, :destroy, :update, :show, :index]
 
-  get 'trains', :to => 'train#all'
   get 'train/two_first', :to => 'train#first_two'
   get 'train/all_names', :to => 'train#all_names'
   get 'train/:id/place_count', :to => 'train#place_count'
   get 'train/smallest_place_count', :to => 'train#smallest_place_count'
-  resources :trains, only: [:update]
+  resources :train, only: [:update, :index, :create, :show, :destroy]
 
   get 'city/has_stations/:count/:name', :to => 'city#cities_with_stations'
+  resources :city, only: [:create, :show, :index, :destroy, :update]
+
+  resources :country, only: [:show, :create, :destroy, :index, :update]
+
+  resources :railway, only: [:index, :update, :show, :create, :destroy]
 
 end

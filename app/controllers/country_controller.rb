@@ -1,5 +1,9 @@
 class CountryController < ApplicationController
 
+  def railways
+    render json: Country.find(params[:id]).railway_stations
+  end
+
   def index
     render json: Country.all
   end

@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2018_05_28_165343) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "second_name"
-    t.string "string"
     t.string "password"
     t.string "phone"
     t.string "email"

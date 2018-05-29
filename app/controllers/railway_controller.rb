@@ -1,5 +1,10 @@
 class RailwayController < ApplicationController
 
+  def get_last_week_trips
+    station = RailwayStation.find(params[:id])
+    render json: station.last_week_trips
+  end
+
   def index
     render json: RailwayStation.all
   end

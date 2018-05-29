@@ -20,14 +20,14 @@ second_city_railway2 = RailwayStation.create city_id: second_city.id, name: 'Mog
 train1 = Train.create name: 'Seva', place_count: 10
 train2 = Train.create name: 'Gosha', place_count: 12
 
-trip1 = Trip.create time_out: DateTime.new(2018, 5, 27),
-                    time_in: DateTime.new(2018, 5, 26),
+trip1 = Trip.create time_in: DateTime.new(2018, 5, 27),
+                    time_out: DateTime.new(2018, 5, 26),
                     train_id: train1.id,
                     railway_station_from_id: first_city_railway1.id,
                     railway_station_to_id: second_city_railway1.id
 
-trip2 = Trip.create time_out: DateTime.new(2018, 5, 26),
-                    time_in: DateTime.new(2018, 5, 25),
+trip2 = Trip.create time_in: DateTime.new(2018, 5, 26),
+                    time_out: DateTime.new(2018, 5, 25),
                     train_id: train2.id,
                     railway_station_from_id: first_city_railway2.id,
                     railway_station_to_id: second_city_railway2.id

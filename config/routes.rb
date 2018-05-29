@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'trips/:train_id', :to => 'trips#by_train'
   get 'trips/after/:date', :to => 'trips#after_date'
   get 'trips/:id/users', :to => 'trips#get_users'
+  get 'trips/query/last_week_trips', :to => 'trips#get_last_week_trips'
+  get 'trips/:id/duration', :to => 'trips#duration'
   resources :trips, only: [:index, :destroy, :create, :update, :show]
 
   get 'users/count', :to => 'users#count'
@@ -21,8 +23,10 @@ Rails.application.routes.draw do
   get 'city/has_stations/:count/:name', :to => 'city#cities_with_stations'
   resources :city, only: [:create, :show, :index, :destroy, :update]
 
+  get 'country/:id/railways', :to => 'country#railways'
   resources :country, only: [:show, :create, :destroy, :index, :update]
 
+  get 'railway/:id/last_week_trips', :to => 'railway#get_last_week_trips'
   resources :railway, only: [:index, :update, :show, :create, :destroy]
 
 end

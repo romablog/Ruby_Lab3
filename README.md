@@ -15,6 +15,8 @@ I've implemented different type of associations for my entities.
 
 I've created method to get all Cities where count of RailwayStations more than specified count and name of station not equals to specified name(method name: cities_with_stations).
 
+Added methods with some business logic for models.
+
 REST API methods:
 
 ````
@@ -26,9 +28,11 @@ DELETE  /country/:id                                country#destroy
 POST    /country/(.:format)                         country#create
 PUT     /country/:id(.:format)                      country#update
 PATCH   /country/:id(.:format)                      country#update
+GET     /country/:id/railways                       country#railways
 
 GET     /railway                                    railway#index
 GET     /railway/:id                                railway#show
+GET     /railway/:id/last_week_trips                railway#get_last_week_trips
 DELETE  /railway/:id                                railway#destroy
 POST    /railway/(.:format)                         railway#create
 PUT     /railway/:id(.:format)                      railway#update
@@ -73,4 +77,6 @@ PATCH   /trips/:id(.:format)                        trips#update
 GET     /trips/:train_id                            trips#by_train
 GET     /trips/after/:date                          trips#after_date
 GET     /trips/:id/users                            trips#get_users
+GET     /trips/:id/duration                         trips#duration
+GET     /trips/query/last_week_trips                trips#get_last_week_trips
 ````

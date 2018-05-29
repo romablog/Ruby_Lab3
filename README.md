@@ -67,6 +67,7 @@ GET     /users/count                                users#count
 GET     /users/:first_name                          users#by_first_name
 POST    /users/add_trip(:id,:trip_id)               users#create_trip
 GET     /users/:id/trips                            users#get_trips
+GET     /users/get_top/:count                       users#get_top
 
 GET     /trips                                      trips#index
 GET     /trips/:id                                  trips#show

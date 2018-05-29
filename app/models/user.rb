@@ -9,6 +9,13 @@ class User < ApplicationRecord
 
   before_validation :normalize_email, on: :create
 
+  def self.get_top_users
+    User
+        .left_joins(:trips)
+        .group(:id)
+        .order('COUNT(trips.id) DESC')
+  end
+
   private
   def normalize_email
     self.email = email.downcase

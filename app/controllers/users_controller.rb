@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     render json: user.trips
   end
 
+  def get_top
+    render json: User.get_top_users.limit(params[:count])
+  end
+
   def index
     render json: User.all
   end

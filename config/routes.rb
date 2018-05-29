@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'users/:first_name', :to => 'users#by_first_name'
   post 'users/add_trip', :to => 'users#create_trip'
   get 'users/:id/trips', :to => 'users#get_trips'
+  get 'users/get_top/:count', :to => 'users#get_top'
   resources :users, only: [:create, :destroy, :update, :show, :index]
 
   get 'train/two_first', :to => 'train#first_two'
